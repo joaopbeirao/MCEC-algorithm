@@ -2,9 +2,9 @@ Run the algorithm:
 
 1. Type in the terminal, in the directory of the MCEC.jar file:
 >> java -jar MCECalgorithm.jar <<dataset-filename>>.csv [N] [optionClass] [MarkovLag]
-      [N] - number of features per time point
-			[optionClass] - boolean: TRUE = with classification; FALSE = without classification
-			[MarkovLag] - boolean: TRUE = with Markov lag; FALSE = standard Early Classification
+	[N] - number of features per time point
+	[optionClass] - boolean: TRUE = with classification; FALSE = without classification
+	[MarkovLag] - boolean: TRUE = with Markov lag; FALSE = standard Early Classification
 
 2. Six text files will be generated.
 
