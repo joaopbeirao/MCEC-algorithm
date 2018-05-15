@@ -9,3 +9,5 @@ The outcomes of the difference in entropy, log-likelihood, MDL score, AIC score 
 
 The file Appendix_SyntheticExampleOfMCECalgorithm.pdf includes a detailed explanation of the proposed method applied to a synthetically
 generated dataset. For clarification purposes, the functioning of the algorithm is expounded through calculation descriptions and graph analysis.
+
+Note: The proposed implementation provides the Markov Lag, an alternative to the standard Early Classification approach. Basically, instead of analysing the correlations from the initial time point until the last, uses the inverse order (from the last to the first one). In this case, the idea is to check of how much information from the closest past we need, in order to obtain a satisfactory prediction.
