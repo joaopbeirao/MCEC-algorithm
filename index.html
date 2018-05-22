@@ -22,26 +22,54 @@
          </p>
          <p class="view"><a href="https://github.com/joaopbeirao/MCECalgorithm">View the Project on GitHub <small>MCEC algorithm</small></a></p>
          <ul>
-            <li><a href="https://github.com/joaopbeirao/MCECalgorithm/raw/master/JarFile_withExample/MCECalgorithm.jar">Download<strong>MCECalgorithm</strong></a></li>
+            <li><a href="https://github.com/joaopbeirao/MCECalgorithm/raw/master/JarFile_withExample/MCECalgorithm.jar">Download<strong>JAR file</strong></a></li>
+            <li><a href="https://github.com/joaopbeirao/MCECalgorithm/tree/master/src">Download<strong>sources</strong></a></li>
          </ul>
       </header>
       <section>
          <h3>Program description</h3>
-         <p>
-            tDBN is Java implementation of a dynamic Bayesian network (DBN) structure learning algorithm with the same name (for details about the algorithm, please <a href="#algorithm">scroll down</a>). It can learn a network structure from a file with multivariate longitudinal observations, and has polynomial time complexity in the number of attributes and observations.
+         <p> MCEC (Multivariate Correlations for Early Classification) algorithm is a Java implementation of an information-theoretic 
+            method for examining the early classification opportunity in a dataset, which contains multivariate time series 
+            together with their respective class labels. The program can be downloaded 
+            <a href="https://github.com/joaopbeirao/MCECalgorithm/raw/master/JarFile_withExample/MCECalgorithm.jar">here</a>.
          </p>
-         <h4>Current release</h4>
+         <h4>Input</h4>
          <p>
-            The program's current release (2014.12.19) is tDBN-0.1.3, and can be downloaded <a href="https://github.com/josemonteiro/tDBN/releases/download/0.1.3/tDBN-0.1.3.jar">here</a>. It comes packaged as an executable JAR file, already including the required external libraries.
+            It receives as input a comma-separated values (CSV) file, containing the time series and the respective class labels. 
+            Each line is expected to correspond to one instance, for which the last column corresponds to the class attribute. 
+            The columns must include the features grouped per time point, chronologically organized. 
+            In addition, the number of attributes (dimensions) is also required as input. The time series can be univariate 
+            or multivariate, however, they must be of fixed length. 
+            Features are allowed to be categorical or numeric, but the dataset cannot contain missing values, 
+            since the algorithm is not provided with any imputation procedure. 
+            Furthermore, the numeric attributes must be discretized.
+         </p>
+         <h4>Output</h4>
+         <p>
+            The outcomes of the difference in entropy, log-likelihood, MDL score, AIC score and classification accuracy, 
+            all for n = {1, ..., L} are outputted from the Java program in text files. 
+            The implementation uses some functionalities of Weka Data Mining Software and an additional Matlab 
+            script is provided for generating the five graphs for representing the results.
+         </p>
+         <h4>Observations</h4>
+         <p> 
+            The file <a href="https://github.com/joaopbeirao/MCECalgorithm/blob/master/Appendix_SyntheticExampleOfMCECalgorithm.pdf">Appendix_SyntheticExampleOfMCECalgorithm.pdf</a> 
+            includes a detailed explanation of the proposed method applied to a synthetically generated dataset. 
+            For clarification purposes, the functioning of the algorithm is expounded through calculation descriptions 
+            and graph analysis.
+         </p>
+         <p>
+            The proposed implementation provides the Markov Lag, an alternative to the standard Early Classification approach. 
+            Basically, instead of analysing the correlations from the initial time point until the last, it uses the inverse order 
+            (from the last to the first one). In this case, the idea is to check of how much information from the closest past we 
+            need, in order to obtain a satisfactory prediction.
          </p>
          <h4>Libraries</h4>
          <p>
-            tDBN depends on two external libraries, both released under the Apache License 2.0:
-<ul><li><a href="http://opencsv.sourceforge.net/">opencsv</a> for parsing CSV files;
-<li><a href="http://commons.apache.org/proper/commons-cli/">Apache Commons CLI</a> for parsing command line 
-options passed to the program, and also printing help messages detailing the 
-available options.
-</ul>
+            MCEC algorithm depends on two external libraries:
+               <ul><li><a href="https://poi.apache.org/download.html">poi</a>;
+               <li><a href="https://www.cs.waikato.ac.nz/ml/weka/downloading.html">Weka</a>.
+               </ul>
          </p>
          
          <h3>Usage</h3>
