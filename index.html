@@ -73,38 +73,14 @@
          </p>
          
          <h3>Usage</h3>
-         <p>By executing the jar file ...
-         <pre><code>$ java -jar tDBN-0.1.3.jar</code></pre>
-         ... the available command-line options are shown:
+         <p>Execute the jar file:
+         <pre><code>$ java -jar MCECalgorithm.jar <<dataset-filename>>.csv [N] [optionClass] [MarkovLag]</code></pre>
+         where the command-line options correspond to:
          </p>
-         <pre><code>usage: tDBN
- -c,--compact                 Outputs network in compact format, omitting
-                              intra-slice edges. Only works if specified
-                              together with -d and with --markovLag 1.
- -d,--dotFormat               Outputs network in dot format, allowing
-                              direct redirection into Graphviz to
-                              visualize the graph.
- -i,--inputFile &lt;file&gt;        Input CSV file to be used for network
-                              learning.
- -m,--markovLag &lt;int&gt;         Maximum Markov lag to be considered, which
-                              is the longest distance between connected
-                              time-slices. Default is 1, allowing edges
-                              from one preceding slice.
- -ns,--nonStationary          Learns a non-stationary network (one
-                              transition network per time transition). By
-                              default, a stationary DBN is learnt.
- -o,--outputFile &lt;file&gt;       Writes output to &lt;file&gt;. If not supplied,
-                              output is written to terminal.
- -p,--numParents &lt;int&gt;        Maximum number of parents from preceding
-                              time-slice(s).
- -pm,--parameters             Learns and outputs the network parameters.
- -r,--root &lt;int&gt;              Root node of the intra-slice tree. By
-                              default, root is arbitrary.
- -s,--scoringFunction &lt;arg&gt;   Scoring function to be used, either MDL or
-                              LL. MDL is used by default.
- -sp,--spanning               Forces intra-slice connectivity to be a tree
-                              instead of a forest, eventually producing a
-                              structure with a lower score.
+         <pre><code>
+[N]                           Number of features per time point
+[optionClass]                 boolean: TRUE = with classification; FALSE = without classification
+[MarkovLag]                   boolean: TRUE = with Markov lag; FALSE = standard Early Classification
 </code></pre>
          <h4>Input file format</h4>
          <p>
