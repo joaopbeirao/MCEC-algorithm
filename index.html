@@ -102,74 +102,12 @@ TRUE, FALSE, TRUE, TRUE, C1
 [MarkovLag]          Type: Boolean - With Markov lag approach (TRUE)
                      or with standard Early Classification (FALSE).
 </code></pre>
-         <h4>Input file format</h4>
-         <p>
-            The input file should be in comma-separated values (CSV) format.
-         <ul>
-            <li>The first line is the header, naming the attributes and specifying the time slice index, separared by two underscores: "attributeName__t"</li>
-            <li>The order of the attributes must be maintained: "a__1", "b__1", "a__2", "b__2".
-            <li>The first column contains an identification (string or number) of each subject (this identifier does not affect the learnt network).</li>
-            <li>All other lines correspond to observations of an individual over time.</li>
-            <li>Missing values can be marked as "?" but should not occur, as the algorithm discards the observation (time slice) in question.</li>
-         </ul>
-         A very simplistic input file example is the following:
-         </p>
-         <pre><code>subject_id,resp__1,age__1,height__1,stunt__1,resp__2,age__2,height__2,stunt__2
-121013, 0, 67, -3, 0, 0, 70, -3, 0
-121113, 0, 27,  2, 0, 0, 30,  0, 0
-121114, 0, 10,  8, 0, 0, 13,  5, 0
-121140, 0, 17,  5, 0, ?,  ?,  ?, ?
-(...)
-</code></pre>
-         <p>
-            Because the algorithm assumes a multinomial distribution, data should be already discretized to guarantee a manageable (i.e., small) number of states for each attribute, taking into account the number of observations. For example, if an attribute is observed 100 times throughout time and 50 different values are recorded, this will generally not provide enough information for learning accurate data dependences.
-         </p>
          
-<h4>Dataset preprocessing script</h3>
-
-<p>A Python script for coverting panel data to the tDBN input format can be downloaded <a href="https://github.com/josemonteiro/tDBN/raw/master/vtoh.py">here</a>. Its description and available command-line options are the following:</p>
-         
-<pre><code>usage: vtoh.py [-h] [--timeInterval TIMEINTERVAL TIMEINTERVAL]
-               [--ignoreColumns IGNORECOLUMNS [IGNORECOLUMNS ...]]
-               [--discretizeColumns DISCRETIZECOLUMNS [DISCRETIZECOLUMNS ...]]
-               [--numberBins NUMBERBINS] [--equalFrequencyBinning]
-               filename idColumn timeColumn
-
-Converts a comma-separated-values (csv) temporal data file in 'vertical
-format' (panel data format, one observation per line) to an 'horizontal
-format' (one subject per line) csv file. The data file must have a column with
-the identification of the subject, as well as a column with the identification
-of the time instant. Both of these columns are provided as arguments and must
-be integer numbers. The time interval to be considered can be specified as an
-argument. It is also possible to specify columns to be ignored and columns to
-be discretized (as well as the number of bins and the discretization method).
-
-positional arguments:
-  filename              Input CSV file.
-  idColumn              Column containing subject IDs.
-  timeColumn            Column containing time entries.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --timeInterval TIMEINTERVAL TIMEINTERVAL
-                        Time interval limits to be considered in the output.
-  --ignoreColumns IGNORECOLUMNS [IGNORECOLUMNS ...]
-                        Columns not to be included in output file.
-  --discretizeColumns DISCRETIZECOLUMNS [DISCRETIZECOLUMNS ...]
-                        Columns to be discretized.
-  --numberBins NUMBERBINS
-                        Number of bins to use when discretizing, default 10.
-  --equalFrequencyBinning
-                        If specified, discretization is done using equal
-                        frequency or quantiles discretization (default is
-                        equal width discretization).
-</code></pre>
-         
-         <h4>Example #1</h4>
+         <h4>Synthetic dataset example</h4>
          <p>
-            The first example considers a synthetic network structure with 5 attributes, each taking 8 states and with one parent from the preceding slice ([t] denotes the time-slice):
+            This example considers the following synthetically generated dataset:
          </p>
-         <p><img src="images/example1-original.png">            
+         <p><img src="images/datasetTable.png">            
          </p>
          <p>
             The above network that was sampled to produce the following observations files:
