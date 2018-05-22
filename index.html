@@ -42,12 +42,22 @@
                <li>The columns must include the features grouped per time point, chronologically organized. 
                The last column corresponds to the class attribute.</li>
                <li>The first line is the header, containing the names of the attributes and the associated time point. Example: 
-               "Att1_TP1", "Att2_TP1", "Att1_TP2", "Att2_TP2".</li>
+               "Att1_TP1", "Att2_TP1", "Att1_TP2", "Att2_TP2", "class".</li>
             </ul>
             The number of attributes (dimensions) is also required as input. The time series can be univariate 
-            or multivariate, however, they must be of fixed length. Features are allowed to be categorical or numeric, 
-            but the dataset cannot contain missing values, since the algorithm is not provided with any imputation procedure. 
-            Furthermore, the numeric attributes must be discretized.
+            or multivariate, however, they must be of fixed length. Numeric attributes must be discretized and
+            the dataset cannot contain missing values, since the algorithm is not provided with any imputation procedure.
+         <p>
+            Dataset example:
+         </p>
+         <pre><code>X1_1, X2_1, X1_2", "X2_2", "class"
+TRUE, FALSE, FALSE, FALSE, C1
+FALSE, FALSE, TRUE, FALSE, C0
+TRUE, TRUE, FALSE, FALSE, C0
+TRUE, FALSE, TRUE, TRUE, C1
+(...)
+</code></pre>
+         <p>
          </p>
          <h4>Output</h4>
          <p>
