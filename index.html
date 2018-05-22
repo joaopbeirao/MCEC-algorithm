@@ -105,16 +105,21 @@ TRUE, FALSE, TRUE, TRUE, C1
          
          <h4>Synthetic dataset example</h4>
          <p>
-            This example considers the following synthetically generated dataset:
+            The <a href="files/syntheticTest.csv">syntheticTest.csv.csv</a> dataset example corresponds to:
          </p>
          <p><img src="images/datasetTable.PNG">            
          </p>
+         <p>The command for analysing the early classification opportunity is
+         <pre><code>$ java -jar MCECalgorithm.jar syntheticTest.csv 1 TRUE FALSE</code></pre>
+         </p>
          <p>
-            The above network that was sampled to produce the following observations files:
+            and produces the following files:
          <ul>
-            <li><a href="files/synth-N50.csv">synth-N50.csv</a>, with 50 observed time transitions</li>
-            <li><a href="files/synth-N150.csv">synth-N150.csv</a>, with 150 observed time transitions</li>
-            <li><a href="files/synth-N250.csv">synth-N250.csv</a>, with 250 observed time transitions</li>
+            <li><a href="files/dataEntropyDiff.txt">dataEntropyDiff.txt</a>, with the difference in entropy results</li>
+            <li><a href="files/dataLL.txt">dataLL.csv</a>, with the log-likelihood results</li>
+            <li><a href="files/dataMDL.txt">dataMDL.txt</a>, with the MDL score results</li>
+            <li><a href="files/dataAIC.txt">dataAIC.txt</a>, with the AIC score results</li>
+            <li><a href="files/classResults.txt">classResultsL.txt</a>, with the classification accuracy analysis</li>
          </ul>
          As all nodes have exactly one parent from the past, the best options are to limit the number of parents with <code>-p 1</code> and use the log-likelihood (LL) score with <code>-s ll</code> to ensure that a maximum number of dependences is retrieved.</p>
          <p>The command to learn the network with the 50 observations file is
