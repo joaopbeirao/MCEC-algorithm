@@ -129,77 +129,13 @@ TRUE, FALSE, TRUE, TRUE, C1
             <li><a href="files/dataAIC.txt">dataAIC.txt</a>, with the AIC score results</li>
             <li><a href="files/classResults.txt">classResultsL.txt</a>, with the classification accuracy analysis</li>
          </ul>
-         As all nodes have exactly one parent from the past, the best options are to limit the number of parents with <code>-p 1</code> and use the log-likelihood (LL) score with <code>-s ll</code> to ensure that a maximum number of dependences is retrieved.</p>
-         <p>The command to learn the network with the 50 observations file is
-         </p>
-         <pre><code>$ java -jar tDBN-0.1.3.jar -i synth-N50.csv -p 1 -s ll</code></pre>
-         <p>
-        and produces the following output:
-         </p>
-         <pre><code>Evaluating network with LL score.
-Number of networks with max score: 2
-Finding a maximum branching.
-Network score: 202.75732463763217
-
------------------
-
-X1[0] -> X0[1]
-X2[0] -> X1[1]
-X3[0] -> X2[1]
-X2[0] -> X3[1]
-X3[0] -> X4[1]
-
-X0[1] -> X1[1]
-X3[1] -> X2[1]
-X0[1] -> X3[1]
-X3[1] -> X4[1]
-</code></pre>
-         <p>
-            Activating the <code>-d</code> switch to directly output in dot format, and redirecting into <a href="http://www.graphviz.org/">Graphviz</a>...
-         <pre><code>$ java -jar tDBN-0.1.3.jar -i synth-N50.csv -p 1 -s ll -d | dot -Tpng -o N50.png</code></pre>
-         <p>...produces this graph:</p>
-         <p><img src="images/example1-N50.png"></p>
-         <p>
-            Although there are some matches (X2[0]->X3[1] and X3[0]->X4[1]), the learnt network is very different from the original, because the number of observations is low.
-         </p>
-         <p>
-            Using the 250 observations file as input to tDBN ...
-         <pre><code>$ java -jar tDBN-0.1.3.jar -i synth-N250.csv -p 1 -s ll</code></pre>
-         ... results in the following output, which is a perfect match of the original network:
-         </p>
-         <pre><code>Evaluating network with LL score.
-Number of networks with max score: 1
-Finding a maximum branching.
-Network score: 829.3579534531533
-
------------------
-
-X0[0] -> X0[1]
-X1[0] -> X1[1]
-X4[0] -> X2[1]
-X2[0] -> X3[1]
-X3[0] -> X4[1]
-
-X1[1] -> X0[1]
-X1[1] -> X2[1]
-X2[1] -> X3[1]
-X2[1] -> X4[1]
-</code></pre>
-         <p>An improved visual representation shows the evolution of the learnt networks with the number of observations N (dashed edges are incorrect):
-         </p>
-         <center>
-         <table>
-         <tr>
-         <td><center><img src="images/N50.png"></center></td>
-         <td><center><img src="images/N150.png"></center></td>
-         <td><center><img src="images/N250.png"></center></td>
-         </tr>
-         <tr>
-         <td><center>N=50</center></td>
-         <td><center>N=150</center></td>
-         <td><center>N=250</center></td>
-         </table>
-         </center>
+         Running the Matlab script MCEC_program.m (with the associated functions) in the same directory as 
+         the text files produces the following graphs:
+         <p><img src="images/entropyDiff_syntheticExample.pdf"></p>
+         <p><img src="images/LL_syntheticExample.pdf"></p>
+         <p><img src="images/MDL_syntheticExample.pdf"></p>
+         <p><img src="images/AIC_syntheticExample.pdf"></p>
+         <p><img src="images/classResults_syntheticExample.pdf"></p>
                   
       </section>
       <footer>
